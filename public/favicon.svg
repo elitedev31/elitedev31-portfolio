@@ -1,0 +1,16 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="6" fill="#0077B6"/>
+  <text
+    x="17"
+    y="17"
+    text-anchor="middle"
+    font-family="Helvetica"
+    font-size="17"
+    font-weight="bold"
+    fill="white"
+    letter-spacing="2"
+    dominant-baseline="middle"
+  >
+    UK
+  </text>
+</svg>
