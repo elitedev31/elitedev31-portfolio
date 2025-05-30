@@ -4,20 +4,38 @@
 
 @layer base {
   html {
-    @apply scroll-smooth;
+    @apply scroll-smooth antialiased;
   }
 
   body {
-    @apply font-sans text-neutral-800 bg-white;
+    @apply font-sans text-neutral-700 dark:text-neutral-300 bg-gradient-to-br from-white to-neutral-50 
+           dark:from-neutral-900 dark:to-neutral-800 min-h-screen;
     overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading text-neutral-900 leading-tight;
+    @apply font-heading text-neutral-900 dark:text-white leading-tight tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl sm:text-5xl md:text-6xl font-bold bg-clip-text text-transparent 
+           bg-gradient-to-r from-primary-600 to-secondary-500 dark:from-primary-400 dark:to-secondary-300;
+  }
+
+  h2 {
+    @apply text-3xl sm:text-4xl font-bold;
+  }
+
+  h3 {
+    @apply text-2xl sm:text-3xl font-bold;
   }
 
   p {
-    @apply leading-relaxed;
+    @apply leading-relaxed text-neutral-700 dark:text-neutral-300;
+  }
+
+  a {
+    @apply transition-all duration-300 hover:opacity-80;
   }
 }
 
@@ -27,38 +45,119 @@
   }
   
   .btn {
-    @apply inline-flex items-center justify-center px-6 py-3 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-medium 
+           transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]
+           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-neutral-900
+           disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow-lg;
   }
   
   .btn-primary {
-    @apply btn bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-500;
+    @apply btn bg-gradient-to-r from-primary-500 to-primary-600 text-white 
+           hover:from-primary-600 hover:to-primary-700 focus:ring-primary-500
+           shadow-primary-500/20 hover:shadow-primary-500/30;
   }
   
   .btn-secondary {
-    @apply btn bg-secondary-500 text-white hover:bg-secondary-600 focus:ring-secondary-500;
+    @apply btn bg-gradient-to-r from-secondary-500 to-secondary-600 text-white 
+           hover:from-secondary-600 hover:to-secondary-700 focus:ring-secondary-500
+           shadow-secondary-500/20 hover:shadow-secondary-500/30;
   }
   
   .btn-outline {
-    @apply btn bg-transparent border-2 border-primary-500 text-primary-500 hover:bg-primary-50 focus:ring-primary-500;
+    @apply btn bg-transparent border-2 border-primary-500/20 text-primary-600 
+           hover:bg-primary-50 dark:hover:bg-primary-900/20 focus:ring-primary-500
+           dark:border-primary-400/20 dark:text-primary-400 dark:hover:bg-primary-900/30
+           hover:border-primary-500 dark:hover:border-primary-400;
   }
   
   .section-title {
-    @apply text-3xl sm:text-4xl font-bold mb-8 text-center;
+    @apply text-3xl sm:text-4xl font-bold mb-4 text-center;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-500 
+           dark:from-primary-400 dark:to-secondary-300;
   }
 
   .section-subtitle {
-    @apply text-xl sm:text-2xl font-medium mb-6 text-center text-neutral-700;
+    @apply text-lg sm:text-xl font-medium mb-12 text-center text-neutral-600 dark:text-neutral-400 
+           max-w-3xl mx-auto leading-relaxed;
   }
   
   .card {
-    @apply bg-white rounded-lg shadow-md overflow-hidden transition-all duration-200 hover:shadow-lg;
+    @apply bg-white/80 dark:bg-neutral-800/80 rounded-2xl shadow-lg hover:shadow-xl 
+           border border-neutral-100/50 dark:border-neutral-700/50
+           transition-all duration-300 overflow-hidden backdrop-blur-sm
+           hover:border-primary-500/20 dark:hover:border-primary-400/20
+           hover:-translate-y-1;
   }
   
   .nav-link {
-    @apply text-neutral-600 hover:text-primary-500 transition-colors duration-200;
+    @apply text-neutral-600 dark:text-neutral-400 hover:text-primary-500 dark:hover:text-primary-400 
+           transition-all duration-300 font-medium relative
+           after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0
+           after:bg-primary-500 dark:after:bg-primary-400
+           after:transition-all after:duration-300
+           hover:after:w-full;
   }
   
   .nav-link.active {
-    @apply text-primary-500 font-medium;
+    @apply text-primary-500 dark:text-primary-400 font-semibold
+           after:w-full after:bg-primary-500 dark:after:bg-primary-400;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border border-neutral-200/50 dark:border-neutral-700/50
+           bg-white/80 dark:bg-neutral-800/80 text-neutral-900 dark:text-white
+           focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-transparent
+           placeholder-neutral-400 dark:placeholder-neutral-500
+           transition-all duration-300 backdrop-blur-sm
+           hover:border-primary-500/20 dark:hover:border-primary-400/20;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium
+           bg-gradient-to-r from-primary-500/10 to-secondary-500/10 
+           dark:from-primary-500/20 dark:to-secondary-500/20
+           text-primary-700 dark:text-primary-300
+           border border-primary-500/10 dark:border-primary-400/10;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-500 via-secondary-500 to-accent-500;
+  }
+
+  .gradient-bg {
+    @apply bg-gradient-to-r from-primary-500 via-secondary-500 to-accent-500;
+  }
+
+  .glass-effect {
+    @apply bg-white/10 dark:bg-neutral-800/10 backdrop-blur-md 
+           border border-white/20 dark:border-neutral-700/20
+           shadow-lg shadow-black/5 dark:shadow-black/20;
+  }
+
+  .hover-card {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl
+           hover:border-primary-500/20 dark:hover:border-primary-400/20;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r 
+           from-primary-500 via-secondary-500 to-accent-500
+           dark:from-primary-400 dark:via-secondary-400 dark:to-accent-400;
+  }
+
+  .border-gradient {
+    @apply border-2 border-transparent bg-gradient-to-r 
+           from-primary-500 via-secondary-500 to-accent-500
+           bg-clip-border;
   }
 }

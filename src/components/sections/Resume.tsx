@@ -139,7 +139,7 @@ const Resume: React.FC = () => {
   };
 
   return (
-    <section id="resume" className="py-20 bg-white">
+    <section id="resume" className="py-20 bg-white dark:bg-neutral-900">
       <div className="container-custom">
         <motion.div 
           className="text-center mb-16"
@@ -164,16 +164,16 @@ const Resume: React.FC = () => {
           <div className="flex justify-center mb-8">
             <div className="flex space-x-6">
               <div className="flex items-center">
-                <span className={`w-4 h-4 rounded-full bg-primary-500 mr-2`}></span>
-                <span>Work Experience</span>
+                <span className={`w-4 h-4 rounded-full bg-primary-500 mr-2 shadow-sm`}></span>
+                <span className="text-neutral-700 dark:text-neutral-300">Work Experience</span>
               </div>
               <div className="flex items-center">
-                <span className={`w-4 h-4 rounded-full bg-secondary-500 mr-2`}></span>
-                <span>Education</span>
+                <span className={`w-4 h-4 rounded-full bg-secondary-500 mr-2 shadow-sm`}></span>
+                <span className="text-neutral-700 dark:text-neutral-300">Education</span>
               </div>
               <div className="flex items-center">
-                <span className={`w-4 h-4 rounded-full bg-accent-500 mr-2`}></span>
-                <span>Certification</span>
+                <span className={`w-4 h-4 rounded-full bg-accent-500 mr-2 shadow-sm`}></span>
+                <span className="text-neutral-700 dark:text-neutral-300">Certification</span>
               </div>
             </div>
           </div>
@@ -186,7 +186,7 @@ const Resume: React.FC = () => {
             animate={inView ? "visible" : "hidden"}
           >
             {/* Timeline line */}
-            <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-neutral-200"></div>
+            <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-neutral-200 dark:bg-neutral-700"></div>
             
             {/* Timeline items */}
             {timelineItems.map((item, index) => (
@@ -198,20 +198,20 @@ const Resume: React.FC = () => {
                 variants={itemVariants}
               >
                 <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:pl-12' : 'md:pr-12 md:text-right'}`}>
-                  <div className="bg-white p-6 rounded-lg shadow-md border border-neutral-100">
+                  <div className={`bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-sm border border-neutral-100 dark:border-neutral-700 hover:shadow-md transition-shadow duration-200`}>
                     <div className="flex items-center mb-2 justify-start">
-                      <span className={`inline-block px-3 py-1 text-xs font-medium rounded-full text-white ${getColorForType(item.type)} mr-2`}>
+                      <span className={`inline-block px-3 py-1 text-xs font-medium rounded-full text-white ${getColorForType(item.type)} mr-2 shadow-sm`}>
                         {item.type === 'work' ? 'Work' : item.type === 'education' ? 'Education' : 'Certification'}
                       </span>
-                      <span className="text-neutral-500 text-sm">{item.period}</span>
+                      <span className="text-neutral-500 dark:text-neutral-400 text-sm">{item.period}</span>
                     </div>
                     
-                    <h3 className="text-xl font-bold">{item.title}</h3>
-                    <p className="text-neutral-600 font-medium mb-3">{item.organization}</p>
-                    <p className="text-neutral-700 mb-3">{item.description}</p>
+                    <h3 className="text-xl font-bold text-neutral-900 dark:text-white">{item.title}</h3>
+                    <p className="text-neutral-600 dark:text-neutral-400 font-medium mb-3">{item.organization}</p>
+                    <p className="text-neutral-700 dark:text-neutral-300 mb-3">{item.description}</p>
                     
                     {item.achievements && (
-                      <ul className={`space-y-1 text-sm text-neutral-700 ${index % 2 === 0 ? 'pl-5' : 'pl-5 md:pl-0 md:pr-5'}`}>
+                      <ul className={`space-y-1 text-sm text-neutral-700 dark:text-neutral-300 ${index % 2 === 0 ? 'pl-5' : 'pl-5 md:pl-0 md:pr-5'}`}>
                         {item.achievements.map((achievement, idx) => (
                           <li key={idx} className="flex items-start">
                             <span className="w-1.5 h-1.5 rounded-full bg-primary-500 mt-1.5 mr-2 flex-shrink-0"></span>
@@ -225,7 +225,7 @@ const Resume: React.FC = () => {
                 
                 {/* Timeline dot */}
                 <div className="absolute left-0 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center">
-                  <div className={`w-10 h-10 rounded-full ${getColorForType(item.type)} text-white flex items-center justify-center`}>
+                  <div className={`w-10 h-10 rounded-full ${getColorForType(item.type)} text-white flex items-center justify-center shadow-md`}>
                     {getIconForType(item.type)}
                   </div>
                 </div>

@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Hero from './components/sections/Hero';
@@ -11,24 +10,30 @@ import Resume from './components/sections/Resume';
 import Process from './components/sections/Process';
 import Contact from './components/sections/Contact';
 import Footer from './components/layout/Footer';
+import CustomCursor from './components/common/CustomCursor';
+import './styles/global.css';
 
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-neutral-50">
-        <Navbar />
-        <main>
-          <Hero />
-          <About />
-          <Skills />
-          <Portfolio />
-          <CaseStudies />
-          <Testimonials />
-          <Resume />
-          <Process />
-          <Contact />
+      <CustomCursor />
+      <div className="min-h-screen bg-gradient-to-br from-neutral-50 via-white to-neutral-100 dark:from-neutral-900 dark:via-neutral-800 dark:to-neutral-900">
+        {/* Subtle noise texture with reduced opacity */}
+        <div className="fixed inset-0 noise-bg opacity-[0.03]" />
+        
+        <Navbar className="glass-effect sticky top-0 z-50" />
+        <main className="relative">
+          <Hero className="glass-effect" />
+          <About className="gradient-bg" />
+          <Skills className="glass-effect" />
+          <Portfolio className="gradient-bg" />
+          <CaseStudies className="glass-effect" />
+          <Testimonials className="gradient-bg" />
+          <Resume className="glass-effect" />
+          <Process className="gradient-bg" />
+          <Contact className="glass-effect" />
         </main>
-        <Footer />
+        <Footer className="gradient-bg" />
       </div>
     </Router>
   );

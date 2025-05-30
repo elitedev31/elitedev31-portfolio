@@ -58,21 +58,21 @@ const Contact: React.FC = () => {
 
   const contactInfo = [
     {
-      icon: <Mail className="text-primary-500\" size={24} />,
+      icon: <Mail className="text-primary-500" size={24} />,
       title: 'Email',
-      content: 'contact@ulysseskai.com',
-      link: 'mailto:contact@ulysseskai.com'
+      content: 'elitedev.kai@gmia.com',
+      link: 'mailto:elitedev.kai@gmia.com'
     },
     {
       icon: <Phone className="text-primary-500" size={24} />,
-      title: 'Phone',
-      content: '+1 (555) 123-4567',
-      link: 'tel:+15551234567'
+      title: 'WhatsApp',
+      content: '+55 15 98135-5146',
+      link: 'https://wa.me/5515981355146'
     },
     {
-      icon: <MapPin className="text-primary-500\" size={24} />,
+      icon: <MapPin className="text-primary-500" size={24} />,
       title: 'Location',
-      content: 'San Francisco, California',
+      content: 'Michigan, United States',
       link: null
     }
   ];
@@ -84,16 +84,18 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className="py-24 bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-800">
       <div className="container-custom">
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-20"
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="section-title">Get In Touch</h2>
-          <p className="section-subtitle max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent mb-4">
+            Get In Touch
+          </h2>
+          <p className="section-subtitle max-w-3xl mx-auto text-neutral-600 dark:text-neutral-300 text-lg">
             Let's discuss how I can help bring your project to life
           </p>
         </motion.div>
@@ -107,79 +109,94 @@ const Contact: React.FC = () => {
         >
           {/* Contact Info & Form */}
           <motion.div 
-            className="lg:w-2/3 bg-white rounded-xl shadow-lg overflow-hidden"
+            className="lg:w-2/3 bg-white dark:bg-neutral-800 rounded-2xl shadow-xl overflow-hidden transform hover:scale-[1.01] transition-transform duration-300"
             variants={itemVariants}
           >
             <div className="grid grid-cols-1 lg:grid-cols-3">
               {/* Contact Information */}
-              <div className="bg-primary-500 text-white p-8">
-                <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-                <p className="mb-8">Feel free to reach out through any of these channels or fill out the form.</p>
+              <div className="bg-gradient-to-br from-primary-600 to-primary-700 text-white p-10 relative overflow-hidden">
+                <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
+                <h3 className="text-2xl font-bold mb-8 relative">Contact Information</h3>
+                <p className="mb-10 text-primary-100 relative">Feel free to reach out through any of these channels or fill out the form.</p>
                 
-                <div className="space-y-6">
+                <div className="space-y-8 relative">
                   {contactInfo.map((item, index) => (
-                    <div key={index} className="flex items-start">
-                      <div className="mr-4 bg-white/10 rounded-full p-2">
+                    <motion.div 
+                      key={index} 
+                      className="flex items-start group hover:translate-x-1 transition-transform duration-300"
+                      whileHover={{ scale: 1.02 }}
+                    >
+                      <div className="mr-4 bg-white/10 rounded-xl p-3 group-hover:bg-white/20 transition-colors duration-300">
                         {item.icon}
                       </div>
                       <div>
-                        <p className="font-medium text-sm text-primary-100">{item.title}</p>
+                        <p className="font-medium text-sm text-primary-200">{item.title}</p>
                         {item.link ? (
-                          <a href={item.link} className="hover:underline">{item.content}</a>
+                          <a href={item.link} className="hover:text-white transition-colors duration-300 text-white">{item.content}</a>
                         ) : (
-                          <p>{item.content}</p>
+                          <p className="text-white">{item.content}</p>
                         )}
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
                 
-                <div className="mt-12">
-                  <p className="font-medium mb-4">Connect with me:</p>
+                <div className="mt-16 relative">
+                  <p className="font-medium mb-6 text-primary-200">Connect with me:</p>
                   <div className="flex space-x-4">
                     {socialLinks.map((link, index) => (
-                      <a 
+                      <motion.a 
                         key={index} 
                         href={link.url}
-                        className="bg-white/10 hover:bg-white/20 p-3 rounded-full transition-colors"
+                        className="bg-white/10 hover:bg-white/20 p-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/20"
+                        whileHover={{ scale: 1.1 }}
                         aria-label={link.name}
                       >
                         {link.icon}
-                      </a>
+                      </motion.a>
                     ))}
                   </div>
                 </div>
               </div>
               
               {/* Contact Form */}
-              <div className="col-span-2 p-8">
-                <h3 className="text-2xl font-bold mb-6">Send Me a Message</h3>
+              <div className="col-span-2 p-10 bg-white dark:bg-neutral-800">
+                <h3 className="text-2xl font-bold mb-8 bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">
+                  Send Me a Message
+                </h3>
                 
                 {submitSuccess ? (
-                  <div className="bg-success-500 text-white p-4 rounded-lg mb-6">
+                  <motion.div 
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="bg-success-500 text-white p-4 rounded-xl mb-6 shadow-lg"
+                  >
                     Thank you for your message! I'll get back to you as soon as possible.
-                  </div>
+                  </motion.div>
                 ) : null}
                 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-neutral-700 mb-1">
+                    <div className="group">
+                      <label htmlFor="name" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2 group-focus-within:text-primary-500 transition-colors duration-300">
                         Your Name
                       </label>
                       <input
                         id="name"
                         type="text"
                         {...register('name', { required: 'Name is required' })}
-                        className={`w-full px-4 py-3 rounded-lg border ${errors.name ? 'border-error-500' : 'border-neutral-300'} focus:outline-none focus:ring-2 focus:ring-primary-500`}
+                        className={`w-full px-4 py-3 rounded-xl border-2 bg-neutral-50 dark:bg-neutral-700 
+                          ${errors.name ? 'border-error-500' : 'border-neutral-200 dark:border-neutral-600'} 
+                          focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+                          transition-all duration-300`}
                       />
                       {errors.name && (
                         <p className="mt-1 text-sm text-error-500">{errors.name.message}</p>
                       )}
                     </div>
                     
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-neutral-700 mb-1">
+                    <div className="group">
+                      <label htmlFor="email" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2 group-focus-within:text-primary-500 transition-colors duration-300">
                         Email Address
                       </label>
                       <input
@@ -192,7 +209,10 @@ const Contact: React.FC = () => {
                             message: 'Invalid email address'
                           }
                         })}
-                        className={`w-full px-4 py-3 rounded-lg border ${errors.email ? 'border-error-500' : 'border-neutral-300'} focus:outline-none focus:ring-2 focus:ring-primary-500`}
+                        className={`w-full px-4 py-3 rounded-xl border-2 bg-neutral-50 dark:bg-neutral-700
+                          ${errors.email ? 'border-error-500' : 'border-neutral-200 dark:border-neutral-600'} 
+                          focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+                          transition-all duration-300`}
                       />
                       {errors.email && (
                         <p className="mt-1 text-sm text-error-500">{errors.email.message}</p>
@@ -200,30 +220,36 @@ const Contact: React.FC = () => {
                     </div>
                   </div>
                   
-                  <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-neutral-700 mb-1">
+                  <div className="group">
+                    <label htmlFor="subject" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2 group-focus-within:text-primary-500 transition-colors duration-300">
                       Subject
                     </label>
                     <input
                       id="subject"
                       type="text"
                       {...register('subject', { required: 'Subject is required' })}
-                      className={`w-full px-4 py-3 rounded-lg border ${errors.subject ? 'border-error-500' : 'border-neutral-300'} focus:outline-none focus:ring-2 focus:ring-primary-500`}
+                      className={`w-full px-4 py-3 rounded-xl border-2 bg-neutral-50 dark:bg-neutral-700
+                        ${errors.subject ? 'border-error-500' : 'border-neutral-200 dark:border-neutral-600'} 
+                        focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+                        transition-all duration-300`}
                     />
                     {errors.subject && (
                       <p className="mt-1 text-sm text-error-500">{errors.subject.message}</p>
                     )}
                   </div>
                   
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-neutral-700 mb-1">
+                  <div className="group">
+                    <label htmlFor="message" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2 group-focus-within:text-primary-500 transition-colors duration-300">
                       Your Message
                     </label>
                     <textarea
                       id="message"
                       rows={6}
                       {...register('message', { required: 'Message is required' })}
-                      className={`w-full px-4 py-3 rounded-lg border ${errors.message ? 'border-error-500' : 'border-neutral-300'} focus:outline-none focus:ring-2 focus:ring-primary-500`}
+                      className={`w-full px-4 py-3 rounded-xl border-2 bg-neutral-50 dark:bg-neutral-700
+                        ${errors.message ? 'border-error-500' : 'border-neutral-200 dark:border-neutral-600'} 
+                        focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+                        transition-all duration-300 resize-none`}
                     ></textarea>
                     {errors.message && (
                       <p className="mt-1 text-sm text-error-500">{errors.message.message}</p>
@@ -231,26 +257,30 @@ const Contact: React.FC = () => {
                   </div>
                   
                   <div>
-                    <button
+                    <motion.button
                       type="submit"
                       disabled={isSubmitting}
-                      className="btn-primary w-full"
+                      className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white py-4 px-6 rounded-xl
+                        font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300
+                        disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
                     >
                       {isSubmitting ? (
                         <span className="flex items-center justify-center">
-                          <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white\" xmlns="http://www.w3.org/2000/svg\" fill="none\" viewBox="0 0 24 24">
-                            <circle className="opacity-25\" cx="12\" cy="12\" r="10\" stroke="currentColor\" strokeWidth="4"></circle>
+                          <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                           </svg>
                           Processing...
                         </span>
                       ) : (
-                        <span className="flex items-center">
+                        <span className="flex items-center justify-center">
                           <Send size={18} className="mr-2" />
                           Send Message
                         </span>
                       )}
-                    </button>
+                    </motion.button>
                   </div>
                 </form>
               </div>
@@ -262,34 +292,44 @@ const Contact: React.FC = () => {
             className="lg:w-1/3 space-y-8"
             variants={itemVariants}
           >
-            <div className="bg-white rounded-xl shadow-lg p-8 border-t-4 border-primary-500">
-              <h3 className="text-xl font-bold mb-4">Current Availability</h3>
-              <div className="mb-4">
-                <span className="inline-block w-3 h-3 rounded-full bg-success-500 mr-2"></span>
-                <span className="font-medium">Available for contracts</span>
+            <div className="bg-white dark:bg-neutral-800 rounded-2xl shadow-xl p-8 border-t-4 border-primary-500
+              transform hover:scale-[1.02] transition-all duration-300">
+              <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">
+                Current Availability
+              </h3>
+              <div className="mb-4 flex items-center">
+                <span className="inline-block w-3 h-3 rounded-full bg-success-500 mr-2 animate-pulse"></span>
+                <span className="font-medium text-neutral-700 dark:text-neutral-300">Available for contracts</span>
               </div>
-              <p className="text-neutral-700">
+              <p className="text-neutral-600 dark:text-neutral-400">
                 I'm currently accepting new contract projects starting in April 2025. 
                 Get in touch to discuss your needs and reserve your spot.
               </p>
             </div>
             
-            <div className="bg-gradient-to-br from-primary-500 to-secondary-500 rounded-xl shadow-lg p-8 text-white">
+            <motion.div 
+              className="bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-500 rounded-2xl shadow-xl p-8 text-white
+                transform hover:scale-[1.02] transition-all duration-300"
+              whileHover={{ scale: 1.02 }}
+            >
               <h3 className="text-xl font-bold mb-4">Let's Work Together</h3>
-              <p className="mb-6">
+              <p className="mb-6 text-primary-100">
                 Looking for a software engineer and AI specialist to bring your vision to life? 
                 I'm here to help turn your ideas into reality.
               </p>
-              <a 
+              <motion.a 
                 href="https://calendly.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn bg-white text-primary-500 hover:bg-neutral-100 w-full"
+                className="inline-flex items-center justify-center w-full bg-white text-primary-500 hover:bg-neutral-100 
+                  py-3 px-6 rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
                 <Calendar size={18} className="mr-2" />
                 <span>Schedule a Call</span>
-              </a>
-            </div>
+              </motion.a>
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>

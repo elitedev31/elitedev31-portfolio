@@ -1,28 +1,35 @@
 import { useState, useEffect } from 'react';
 
-type Theme = 'light' | 'dark' | 'system';
+type Theme = 'light' | 'dark';
 
 export function useTheme() {
   const [theme, setTheme] = useState<Theme>(() => {
     const stored = localStorage.getItem('theme');
-    return (stored as Theme) || 'system';
+    if (stored === 'light' || stored === 'dark') {
+      return stored as Theme;
+    }
+    // Default to system preference
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   });
 
   useEffect(() => {
     function updateTheme() {
       const root = window.document.documentElement;
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      const activeTheme = theme === 'system' ? systemTheme : theme;
-      
       root.classList.remove('light', 'dark');
-      root.classList.add(activeTheme);
+      root.classList.add(theme);
     }
 
     localStorage.setItem('theme', theme);
     updateTheme();
 
+    // Listen for system theme changes
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handler = () => updateTheme();
+    const handler = () => {
+      // Only update if user hasn't explicitly set a theme
+      if (!localStorage.getItem('theme')) {
+        setTheme(mediaQuery.matches ? 'dark' : 'light');
+      }
+    };
     mediaQuery.addEventListener('change', handler);
 
     return () => mediaQuery.removeEventListener('change', handler);

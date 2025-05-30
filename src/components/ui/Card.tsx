@@ -7,7 +7,7 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ children, className = '' }) => {
   return (
-    <div className={`bg-white rounded-lg shadow-md overflow-hidden ${className}`}>
+    <div className={`bg-white dark:bg-neutral-800 rounded-lg shadow-md overflow-hidden ${className}`}>
       {children}
     </div>
   );
@@ -93,7 +93,7 @@ export const CardFooter: React.FC<CardFooterProps> = ({
   className = '' 
 }) => {
   return (
-    <div className={`px-6 py-4 bg-neutral-50 ${className}`}>
+    <div className={`px-6 py-4 bg-neutral-50 dark:bg-neutral-900 ${className}`}>
       {children}
     </div>
   );

@@ -3,7 +3,11 @@ import { Menu, X, Github, Linkedin, Twitter } from 'lucide-react';
 import ThemeToggle from '../ui/ThemeToggle';
 import { useTheme } from '../../hooks/useTheme';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  className?: string;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { theme, setTheme } = useTheme();
@@ -38,8 +42,8 @@ const Navbar: React.FC = () => {
   return (
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white dark:bg-neutral-900 shadow-md py-3' : 'bg-transparent py-5'
-      }`}
+        isScrolled ? 'shadow-md py-3' : 'py-5'
+      } ${className}`}
     >
       <div className="container-custom">
         <div className="flex items-center justify-between">

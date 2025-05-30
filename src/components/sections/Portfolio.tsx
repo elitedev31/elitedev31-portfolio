@@ -102,6 +102,16 @@ const Portfolio: React.FC = () => {
       technologies: ['Node.js', 'MQTT', 'React', 'MongoDB', 'Raspberry Pi'],
       liveUrl: '#',
       githubUrl: '#'
+    },
+    {
+      id: 9,
+      title: 'Cross-Platform Task Manager',
+      description: 'A feature-rich task management application with offline support, real-time sync, and beautiful animations built with Flutter.',
+      image: 'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
+      category: 'mobile',
+      technologies: ['Flutter', 'Dart', 'Firebase', 'Provider', 'SQLite'],
+      liveUrl: '#',
+      githubUrl: '#'
     }
   ];
 
@@ -139,8 +149,47 @@ const Portfolio: React.FC = () => {
   };
 
   return (
-    <section id="portfolio" className="py-20 bg-white">
-      <div className="container-custom">
+    <section id="portfolio" className="py-20 relative overflow-hidden">
+      {/* Portfolio Slider Background */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-primary-500/10 via-secondary-500/10 to-accent-500/10"
+          animate={{
+            x: ['-100%', '100%']
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-l from-primary-500/10 via-secondary-500/10 to-accent-500/10"
+          animate={{
+            x: ['100%', '-100%']
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear",
+            delay: 10
+          }}
+        />
+         <motion.div
+          className="absolute inset-0 bg-gradient-to-br from-primary-500/15 to-secondary-500/15"
+          animate={{
+            y: ['-100%', '100%']
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "linear",
+            delay: 5
+          }}
+        />
+      </div>
+
+      <div className="container-custom relative z-10">
         <motion.div 
           className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
@@ -165,8 +214,8 @@ const Portfolio: React.FC = () => {
               onClick={() => setFilter(category.id)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 filter === category.id
-                  ? 'bg-primary-500 text-white'
-                  : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'
+                  ? 'bg-primary-500 text-white shadow-md'
+                  : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700'
               }`}
             >
               {category.name}
@@ -198,7 +247,7 @@ const Portfolio: React.FC = () => {
                     {project.liveUrl && (
                       <a 
                         href={project.liveUrl} 
-                        className="bg-white text-primary-500 p-2 rounded-full hover:bg-primary-500 hover:text-white transition-colors"
+                        className="bg-white dark:bg-neutral-800 text-primary-500 p-2 rounded-full hover:bg-primary-500 hover:text-white transition-colors"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -208,7 +257,7 @@ const Portfolio: React.FC = () => {
                     {project.githubUrl && (
                       <a 
                         href={project.githubUrl} 
-                        className="bg-white text-primary-500 p-2 rounded-full hover:bg-primary-500 hover:text-white transition-colors"
+                        className="bg-white dark:bg-neutral-800 text-primary-500 p-2 rounded-full hover:bg-primary-500 hover:text-white transition-colors"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -217,7 +266,7 @@ const Portfolio: React.FC = () => {
                     )}
                     <a 
                       href={`#project-${project.id}`} 
-                      className="bg-white text-primary-500 p-2 rounded-full hover:bg-primary-500 hover:text-white transition-colors"
+                      className="bg-white dark:bg-neutral-800 text-primary-500 p-2 rounded-full hover:bg-primary-500 hover:text-white transition-colors"
                     >
                       <Info size={18} />
                     </a>
@@ -226,20 +275,20 @@ const Portfolio: React.FC = () => {
               </div>
               
               <div className="p-6 flex-grow flex flex-col">
-                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                <p className="text-neutral-700 mb-4 flex-grow">{project.description}</p>
+                <h3 className="text-xl font-bold mb-2 text-neutral-900 dark:text-white">{project.title}</h3>
+                <p className="text-neutral-700 dark:text-neutral-300 mb-4 flex-grow">{project.description}</p>
                 
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.slice(0, 3).map((tech, index) => (
                     <span 
                       key={index}
-                      className="px-3 py-1 text-xs font-medium rounded-full bg-primary-100 text-primary-700"
+                      className="badge"
                     >
                       {tech}
                     </span>
                   ))}
                   {project.technologies.length > 3 && (
-                    <span className="px-3 py-1 text-xs font-medium rounded-full bg-neutral-100 text-neutral-700">
+                    <span className="badge bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">
                       +{project.technologies.length - 3} more
                     </span>
                   )}

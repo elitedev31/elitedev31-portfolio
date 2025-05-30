@@ -1,14 +1,14 @@
 import React from 'react';
-import { Sun, Moon, Monitor } from 'lucide-react';
+import { Sun, Moon } from 'lucide-react';
 
-type Theme = 'light' | 'dark' | 'system';
+type Theme = 'light' | 'dark';
 
 interface ThemeToggleProps {
   theme: Theme;
   setTheme: (theme: Theme) => void;
 }
 
-const themeOrder: Theme[] = ['light', 'dark', 'system'];
+const themeOrder: Theme[] = ['light', 'dark'];
 
 const getNextTheme = (current: Theme): Theme => {
   const idx = themeOrder.indexOf(current);
@@ -21,8 +21,6 @@ const getThemeIcon = (theme: Theme) => {
       return <Sun size={18} />;
     case 'dark':
       return <Moon size={18} />;
-    case 'system':
-      return <Monitor size={18} />;
     default:
       return <Sun size={18} />;
   }
@@ -38,9 +36,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ theme, setTheme }) => {
         ${
           theme === 'light'
             ? 'text-primary-500'
-            : theme === 'dark'
-            ? 'text-yellow-400'
-            : 'text-blue-400'
+            : 'text-yellow-400'
         }
       `}
       aria-label={`Switch to ${nextTheme} mode`}

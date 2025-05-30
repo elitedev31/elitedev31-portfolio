@@ -75,7 +75,7 @@ const Process: React.FC = () => {
   };
 
   return (
-    <section id="process" className="py-20 bg-neutral-50">
+    <section id="process" className="py-20 bg-neutral-50 dark:bg-neutral-900">
       <div className="container-custom">
         <motion.div 
           className="text-center mb-16"
@@ -101,17 +101,17 @@ const Process: React.FC = () => {
             {processSteps.map((step, index) => (
               <motion.div 
                 key={index}
-                className="bg-white p-8 rounded-lg shadow-md border border-neutral-100 relative overflow-hidden"
+                className="bg-white dark:bg-neutral-800 p-8 rounded-xl shadow-sm border border-neutral-100 dark:border-neutral-700 hover:shadow-md transition-all duration-200 relative overflow-hidden"
                 variants={itemVariants}
               >
-                <div className="absolute top-0 right-0 w-20 h-20 bg-primary-50 rounded-bl-full"></div>
+                <div className="absolute top-0 right-0 w-20 h-20 bg-primary-50 dark:bg-primary-900/20 rounded-bl-full"></div>
                 <div className="relative z-10">
-                  <div className="flex items-center justify-center w-12 h-12 bg-primary-100 text-primary-500 rounded-lg mb-4">
+                  <div className="flex items-center justify-center w-12 h-12 bg-primary-100 dark:bg-primary-900/30 text-primary-500 dark:text-primary-400 rounded-lg mb-4 shadow-sm">
                     {step.icon}
                   </div>
-                  <span className="text-sm font-medium text-primary-500">Step {index + 1}</span>
-                  <h3 className="text-xl font-bold mt-1 mb-3">{step.title}</h3>
-                  <p className="text-neutral-700">{step.description}</p>
+                  <span className="text-sm font-medium text-primary-500 dark:text-primary-400">Step {index + 1}</span>
+                  <h3 className="text-xl font-bold mt-1 mb-3 text-neutral-900 dark:text-white">{step.title}</h3>
+                  <p className="text-neutral-700 dark:text-neutral-300">{step.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -119,17 +119,17 @@ const Process: React.FC = () => {
 
           {/* Additional info */}
           <motion.div 
-            className="mt-16 bg-gradient-to-r from-primary-500 to-secondary-500 text-white p-8 rounded-lg shadow-lg"
+            className="mt-16 gradient-bg text-white p-8 rounded-xl shadow-lg"
             variants={itemVariants}
           >
             <div className="flex flex-col md:flex-row items-center">
               <div className="md:w-2/3 mb-8 md:mb-0 md:pr-8">
                 <h3 className="text-2xl font-bold mb-4">Communication & Collaboration</h3>
-                <p className="mb-4">
+                <p className="mb-4 text-white/90">
                   Throughout the entire process, I maintain clear and consistent communication. I believe in transparency
                   and keeping you informed at every stage of the project.
                 </p>
-                <p>
+                <p className="text-white/90">
                   For contract projects, I provide regular updates, realistic timelines, and am adaptable to your preferred
                   communication channels and project management tools.
                 </p>
@@ -137,21 +137,21 @@ const Process: React.FC = () => {
               
               <div className="md:w-1/3 flex justify-center">
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-white/10 p-4 rounded-lg backdrop-blur-sm">
+                  <div className="glass-effect p-4 rounded-lg">
                     <p className="text-4xl font-bold">94%</p>
-                    <p className="text-sm">On-time delivery</p>
+                    <p className="text-sm text-white/90">On-time delivery</p>
                   </div>
-                  <div className="bg-white/10 p-4 rounded-lg backdrop-blur-sm">
+                  <div className="glass-effect p-4 rounded-lg">
                     <p className="text-4xl font-bold">98%</p>
-                    <p className="text-sm">Client satisfaction</p>
+                    <p className="text-sm text-white/90">Client satisfaction</p>
                   </div>
-                  <div className="bg-white/10 p-4 rounded-lg backdrop-blur-sm">
+                  <div className="glass-effect p-4 rounded-lg">
                     <p className="text-4xl font-bold">12+</p>
-                    <p className="text-sm">Years experience</p>
+                    <p className="text-sm text-white/90">Years experience</p>
                   </div>
-                  <div className="bg-white/10 p-4 rounded-lg backdrop-blur-sm">
+                  <div className="glass-effect p-4 rounded-lg">
                     <p className="text-4xl font-bold">50+</p>
-                    <p className="text-sm">Projects completed</p>
+                    <p className="text-sm text-white/90">Projects completed</p>
                   </div>
                 </div>
               </div>
