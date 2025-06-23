@@ -152,7 +152,8 @@ const Resume: React.FC = () => {
             A timeline of my professional journey and educational background
           </p>
           <a 
-            href="#" 
+            href="/resume.pdf" 
+            download
             className="btn-outline inline-flex items-center mt-6"
           >
             <Download size={18} className="mr-2" />

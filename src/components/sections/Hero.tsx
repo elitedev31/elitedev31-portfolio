@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Download, ArrowRight, Sparkles, Code, Cpu, Rocket } from 'lucide-react';
-import photo from '../../assests/img.jpg';
 interface HeroProps {
   className?: string;
 }
@@ -204,7 +203,8 @@ const Hero: React.FC<HeroProps> = ({ className = '' }) => {
                               blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </motion.a>
               <motion.a 
-                href="#" 
+                href="/resume.pdf" 
+                download
                 className="btn-outline group relative overflow-hidden"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
@@ -248,7 +248,7 @@ const Hero: React.FC<HeroProps> = ({ className = '' }) => {
         <div className="relative z-10 w-full h-full rounded-3xl bg-white/50 dark:bg-neutral-900/60 shadow-2xl backdrop-blur-xl border border-white/30 dark:border-neutral-800/40 overflow-hidden flex flex-col items-center justify-center">
           {/* Blob Masked Image with Shine */}
           <img
-            src={photo}
+            src='./img.png'
             alt="Ulysses Kai"
             className="w-full h-full object-cover rounded-[2.5rem] shadow-xl"
             style={{

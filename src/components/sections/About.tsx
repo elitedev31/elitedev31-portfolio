@@ -2,7 +2,6 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Code, Users, LightbulbIcon, Palette, Sparkles, ArrowRight } from 'lucide-react';
-import journeyImage from '../../assests/journey.png';
 import { SectionProps } from '../../types/components';
 
 const About: React.FC<SectionProps> = ({ className = '' }) => {
@@ -138,7 +137,7 @@ const About: React.FC<SectionProps> = ({ className = '' }) => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent z-10" />
                 <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 to-secondary-500/10 mix-blend-overlay" />
                 <img 
-                  src={journeyImage}
+                  src='./journey.png'
                   alt="Ulysses Kai's journey" 
                   className="w-full h-auto rounded-2xl shadow-soft-xl relative z-0
                            transition-transform duration-700 group-hover:scale-105"
